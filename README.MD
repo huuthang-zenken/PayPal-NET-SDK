@@ -119,25 +119,8 @@ Before capturing an order, order should be approved by the buyer using the appro
             Console.WriteLine("Capture Id: {0}", result.Id);
             return response;
     }
+
 ```
-## Running tests
-
-To run integration tests using your client id and secret, run the `test` gradle command with the `-Pintegration` flag
-```sh
-$ PAYPAL_CLIENT_ID=YOUR_SANDBOX_CLIENT_ID PAYPAL_CLIENT_SECRET=YOUR_SANDBOX_CLIENT_SECRET dotnet test -v normal
-```
-
-You may use the client id and secret above for demonstration purposes.
-
-
-## Samples
-
-You can start off by trying out [creating and capturing an order](/Samples/CaptureIntentExamples/RunAll.java).
-
-To try out different samples for both create and authorize intent head to [this link](/Samples).
-
-Note: Update the `PayPalClient.cs` with your sandbox client credentials or pass your client credentials as environment variable while executing the samples.
-
 
 ## License
 Code released under [SDK LICENSE](LICENSE)  

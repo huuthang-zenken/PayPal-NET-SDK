@@ -1,0 +1,6 @@
+---
+projectName: PayPalNETSDK
+language: dotnet
+sourcePath: Source
+testPath: Test
+apiVersioning: false
