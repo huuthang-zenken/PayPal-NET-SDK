@@ -6,6 +6,8 @@ namespace PayPalSdk.Subscriptions
     [DataContract]
     public class TransactionCollection
     {
+        public TransactionCollection() { }
+
         [DataMember(Name = "transactions", EmitDefaultValue = false)]
         public List<Transaction> Transactions;
 

@@ -5,6 +5,8 @@ namespace PayPalSdk.Subscriptions
     [DataContract]
     public class SubscriberRequest
     {
+        public SubscriberRequest() { }
+
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public Name Name;
 

@@ -5,6 +5,8 @@ namespace PayPalSdk.Subscriptions
     [DataContract]
     public class Transaction
     {
+        public Transaction() { }
+
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id;
 

@@ -6,6 +6,8 @@ namespace PayPalSdk.Subscriptions
     [DataContract]
     public class BillingInfo
     {
+        public BillingInfo() {}
+
         [DataMember(Name = "outstanding_balance", EmitDefaultValue = false)]
         public Money OutstandingBalance;
 
