@@ -2,16 +2,19 @@
 
 ![Home Image](homepage.jpg)
 
-__Welcome to PayPal Dotnet SDK__. This repository contains PayPal's Dotnet SDK and samples ffor [v2/checkout/orders](https://developer.paypal.com/docs/api/orders/v2/) and [v2/payments](https://developer.paypal.com/docs/api/payments/v2/) APIs.
+__Welcome to PayPal Dotnet SDK__. This repository contains PayPal's Dotnet SDK for 
+[v2/checkout/orders](https://developer.paypal.com/docs/api/orders/v2/) APIs, 
+[v2/payments](https://developer.paypal.com/docs/api/payments/v2/) APIs, 
+[v1/billing/subscriptions](https://developer.paypal.com/docs/api/subscriptions/v1/) APIs, 
+[v1/notifications/webhooks](https://developer.paypal.com/docs/api/webhooks/v1/) APIs.
 
-This is a part of the next major PayPal SDK. It includes a simplified interface to only provide simple model objects and blueprints for HTTP calls. This repo currently contains functionality for PayPal Checkout APIs which includes [Orders V2](https://developer.paypal.com/docs/api/orders/v2/) and [Payments V2](https://developer.paypal.com/docs/api/payments/v2/).
+It includes a simplified interface to only provide simple model objects and blueprints for HTTP calls. This repo currently contains functionality for PayPal APIs which includes [Orders V2], [Payments V2], [Subscriptions V1], [Webhooks V1].
 
-Please refer to the [PayPal Checkout Integration Guide](https://developer.paypal.com/docs/checkout/) for more information. Also refer to [Setup your SDK](https://developer.paypal.com/docs/checkout/reference/server-integration/setup-sdk/) for additional information about setting up the SDK's.
-
+Also refer to [Setup your SDK](https://developer.paypal.com/docs/checkout/reference/server-integration/setup-sdk/) for additional information about setting up the SDK's.
 
 ## Prerequisites
 
-.NET 4.6.1 or later
+.NET Core 1.0+
 
 An environment which supports TLS 1.2 (see the TLS-update site for more information)
 
@@ -19,19 +22,13 @@ PayPalHttp 1.0.0
 
 ## Usage
 
-### Binaries
-
-It is not necessary to fork this repository for using the PayPal SDK. Please take a look at [PayPal Checkout Server SDK](https://developer.paypal.com/docs/checkout/reference/server-integration) for configuring and working with SDK without forking this code.
-
-For contributing to this repository or using the samples you can fork this repository.
-
 ### Setting up credentials
 Get client ID and client secret by going to https://developer.paypal.com/developer/applications and generating a REST API app. Get <b>Client ID</b> and <b>Secret</b> from there.
 
 ```dotnet
 using System;
-using PayPalCheckoutSdk.Core;
-using PayPalCheckoutSdk.Orders;
+using PayPalSdk.Core;
+using PayPalSdk.Orders;
 using PayPalHttp;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -43,12 +40,12 @@ public class CaptureOrderSample
 
     public static HttpClient client()
     {
-    // Creating a sandbox environment
-    PayPalEnvironment environment = new SandboxEnvironment(clientId, secret);
+        // Creating a sandbox environment
+        PayPalEnvironment environment = new SandboxEnvironment(clientId, secret);
 
-    // Creating a client for the environment
-    PayPalHttpClient client = new PayPalHttpClient(environment);
-    return client;
+        // Creating a client for the environment
+        PayPalHttpClient client = new PayPalHttpClient(environment);
+        return client;
     }
 }
 ```
@@ -58,7 +55,7 @@ public class CaptureOrderSample
 This will create an order and print order id for the created order
 
 ```dotnet
-public async static Task<HttpResponse> createOrder()
+public async static Task<HttpResponse> CreateOrder()
  {
          HttpResponse response;
         // Construct a request object and set desired parameters
@@ -106,7 +103,7 @@ public async static Task<HttpResponse> createOrder()
 ### Capturing an Order
 Before capturing an order, order should be approved by the buyer using the approve link in create order response
 ```dotnet
-  public async static Task<HttpResponse> captureOrder()
+  public async static Task<HttpResponse> CaptureOrder()
     {
             // Construct a request object and set desired parameters
             // Replace ORDER-ID with the approved order id from create order
