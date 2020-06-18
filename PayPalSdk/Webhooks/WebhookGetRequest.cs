@@ -7,11 +7,6 @@ namespace PayPalSdk.Webhooks
 {
     public class WebhookGetRequest : HttpRequest
     {
-        public WebhookGetRequest() : base("/v1/notifications/webhooks", HttpMethod.Get, typeof(WebhookList))
-        {
-            this.ContentType = "application/json";
-        }
-
         public WebhookGetRequest(string webhookId) : base("/v1/notifications/webhooks/{webhook_id}", HttpMethod.Get, typeof(Webhook))
         {
             try
