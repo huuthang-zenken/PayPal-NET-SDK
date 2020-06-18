@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PayPalHttp;
+using System;
 using System.IO;
 using System.Net.Http;
 
-using PayPalHttp;
-
 namespace PayPalSdk.Plans
 {
-    public class PlansPatchRequest<T> : HttpRequest
+    public class PlanUpdatePricingRequest : HttpRequest
     {
-        public PlansPatchRequest(string planId) : base("/v1/billing/plans/{plan_id}", HttpMethod.Patch, typeof(void))
+        public PlanUpdatePricingRequest(string planId) : base("/v1/billing/plans/{plan_id}/update-pricing-schemes", HttpMethod.Post, typeof(void))
         {
             try
             {
@@ -20,9 +18,9 @@ namespace PayPalSdk.Plans
             this.ContentType = "application/json";
         }
 
-        public PlansPatchRequest<T> RequestBody(List<Patch<T>> patchRequest)
+        public PlanUpdatePricingRequest RequestBody(UpdatePricingPlanRequest request)
         {
-            this.Body = patchRequest;
+            this.Body = request;
             return this;
         }
     }

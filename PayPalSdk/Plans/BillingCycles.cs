@@ -15,8 +15,8 @@ namespace PayPalSdk.Plans
 
         /// <summary>
         /// The tenure type of the billing cycle. In case of a plan having trial cycle, only 2 trial cycles are allowed per plan. The possible values are:
-        /// REGULAR. A regular billing cycle.
-        /// TRIAL. A trial billing cycle.
+        /// REGULAR: A regular billing cycle.
+        /// TRIAL: A trial billing cycle.
         /// </summary>
         [DataMember(Name = "tenure_type", EmitDefaultValue = false)]
         public string TenureType;

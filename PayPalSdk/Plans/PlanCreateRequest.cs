@@ -3,20 +3,20 @@ using System.Net.Http;
 
 namespace PayPalSdk.Plans
 {
-    public class PlansCreateRequest : HttpRequest
+    public class PlanCreateRequest : HttpRequest
     {
-        public PlansCreateRequest() : base("/v1/billing/plans", HttpMethod.Post, typeof(Plan))
+        public PlanCreateRequest() : base("/v1/billing/plans", HttpMethod.Post, typeof(Plan))
         {
             this.ContentType = "application/json";
         }
 
-        public PlansCreateRequest Prefer(string prefer)
+        public PlanCreateRequest Prefer(string prefer)
         {
             this.Headers.Add("Prefer", prefer);
             return this;
         }
 
-        public PlansCreateRequest RequestBody(PlanRequest request)
+        public PlanCreateRequest RequestBody(PlanRequest request)
         {
             this.Body = request;
             return this;

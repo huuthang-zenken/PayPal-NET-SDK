@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 
@@ -6,9 +7,9 @@ using PayPalHttp;
 
 namespace PayPalSdk.Plans
 {
-    public class PlansDeactiveRequest<T> : HttpRequest
+    public class PlanPatchRequest<T> : HttpRequest
     {
-        public PlansDeactiveRequest(string planId) : base("/v1/billing/plans/{plan_id}/deactivate", HttpMethod.Post, typeof(void))
+        public PlanPatchRequest(string planId) : base("/v1/billing/plans/{plan_id}", HttpMethod.Patch, typeof(void))
         {
             try
             {
@@ -17,6 +18,12 @@ namespace PayPalSdk.Plans
             catch (IOException) { }
 
             this.ContentType = "application/json";
+        }
+
+        public PlanPatchRequest<T> RequestBody(List<Patch<T>> patchRequest)
+        {
+            this.Body = patchRequest;
+            return this;
         }
     }
 }

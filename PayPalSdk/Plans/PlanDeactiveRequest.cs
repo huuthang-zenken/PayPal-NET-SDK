@@ -6,9 +6,9 @@ using PayPalHttp;
 
 namespace PayPalSdk.Plans
 {
-    public class PlansActiveRequest<T> : HttpRequest
+    public class PlanDeactiveRequest<T> : HttpRequest
     {
-        public PlansActiveRequest(string planId) : base("/v1/billing/plans/{plan_id}/activate", HttpMethod.Post, typeof(void))
+        public PlanDeactiveRequest(string planId) : base("/v1/billing/plans/{plan_id}/deactivate", HttpMethod.Post, typeof(void))
         {
             try
             {
